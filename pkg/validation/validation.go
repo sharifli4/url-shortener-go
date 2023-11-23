@@ -12,7 +12,9 @@ type Validation struct {
 
 func (v *Validation) ValidateURLPayload(c *fiber.Ctx) error {
 	body := new(payload.UrlPayload)
-	c.BodyParser(&body)
+	if err := c.BodyParser(&body); err != nil {
+		return err
+	}
 	err := v.Validator.Struct(body)
 	if err != nil {
 		payloadError := payload.ErrorPayload{
