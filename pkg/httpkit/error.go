@@ -1,4 +1,4 @@
-package payload
+package httpkit
 
 type ErrorPayload struct {
 	Message string `json:"message"`

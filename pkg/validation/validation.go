@@ -3,7 +3,7 @@ package validation
 import (
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
-	"github.com/shari4ov/url-shortener-go/pkg/payload"
+	"github.com/shari4ov/url-shortener-go/pkg/httpkit"
 )
 
 type Validation struct {
@@ -11,14 +11,14 @@ type Validation struct {
 }
 
 func (v *Validation) ValidateURLPayload(c *fiber.Ctx) error {
-	body := new(payload.UrlPayload)
+	body := new(httpkit.UrlPayload)
 	if err := c.BodyParser(&body); err != nil {
 		return err
 	}
 	err := v.Validator.Struct(body)
 	if err != nil {
-		payloadError := payload.ErrorPayload{
-			Message: "Invalid payload",
+		payloadError := httpkit.ErrorPayload{
+			Message: "Invalid httpkit",
 			Status:  fiber.StatusBadRequest,
 		}
 		return c.Status(fiber.StatusBadRequest).JSON(payloadError)
