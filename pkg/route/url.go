@@ -14,4 +14,5 @@ type Route struct {
 
 func (r *Route) StartRoutes() {
 	r.App.Post("/", r.UrlValidation.ValidateURLPayload, r.Handlers.CreateURL)
+	r.App.Get("/:token", r.Handlers.RedirectURL)
 }
