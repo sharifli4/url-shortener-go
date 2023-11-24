@@ -18,7 +18,7 @@ func (v *Validation) ValidateURLPayload(c *fiber.Ctx) error {
 	err := v.Validator.Struct(body)
 	if err != nil {
 		payloadError := httpkit.ErrorPayload{
-			Message: "Invalid httpkit",
+			Message: "Invalid Payload",
 			Status:  fiber.StatusBadRequest,
 		}
 		return c.Status(fiber.StatusBadRequest).JSON(payloadError)
