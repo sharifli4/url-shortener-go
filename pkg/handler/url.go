@@ -3,6 +3,7 @@ package handler
 import (
 	"fmt"
 	"github.com/gofiber/fiber/v2"
+	"github.com/shari4ov/url-shortener-go/pkg/config"
 	"github.com/shari4ov/url-shortener-go/pkg/httpkit"
 	"github.com/shari4ov/url-shortener-go/pkg/service"
 	"github.com/shari4ov/url-shortener-go/pkg/token"
@@ -24,7 +25,7 @@ func (h *HttpHandler) CreateURL(c *fiber.Ctx) error {
 	}
 	h.Service.SaveToken(tokenUrl)
 	responsePayload := httpkit.ResponsePayload{
-		ShortUrl: fmt.Sprintf("http://localhost:3000/%s", tokenUrl.Token),
+		ShortUrl: fmt.Sprintf("%s/%s", config.TinyDomain, tokenUrl.Token),
 		Status:   fiber.StatusOK,
 	}
 	return c.Status(fiber.StatusOK).JSON(responsePayload)
