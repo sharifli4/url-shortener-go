@@ -1,11 +1,5 @@
 version: '3'
-
 tasks:
-  build:
-    dir: cmd
-    cmds:
-      - go build -o app main.go
-  
   run:
     desc: "runs our app and any dependencies defined within the docker-compose.yml"
     cmds:
