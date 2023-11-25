@@ -1,5 +1,7 @@
-# url-shortener-go
-URL shortener web application written in Go
+# URL shortener application API
+This is a simple URL shortener application API written in Go. <br>
+It uses Redis for caching to store token of URL and return domain with token.<br>
+<small>API idempotency will be implemented</small>.
 ### How to run
 1. Clone the repository
  ##
